@@ -1,0 +1,26 @@
+cassandra - Course_DB
+keyspace - mykeyspace
+
+CREATE TABLE students (
+    student_id UUID PRIMARY KEY,
+    student_name text,
+    student_email text,
+    gpa decimal
+);
+
+CREATE TABLE degree_class (
+    degree_id UUID PRIMARY KEY,
+    degree_name text,
+    class_name text,
+    class_year text,
+    number_of_students int
+);
+
+
+CREATE TABLE courses (
+    course_id UUID PRIMARY KEY,
+    course_name text,
+    course_description text,
+    course_credits int,
+    course_duration text
+);
