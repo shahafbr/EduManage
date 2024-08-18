@@ -21,9 +21,9 @@ session = cluster.connect(keyspace_name)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('Index.html')
 
-@app.route('/add_course', methods=['GET', 'POST'])
+@app.route('/Add_course', methods=['GET', 'POST'])
 def add_course():
     if request.method == 'POST':
         course_id = uuid.uuid4()
@@ -38,9 +38,9 @@ def add_course():
         """
         session.execute(query, (course_id, course_name, course_description, course_credits, course_duration))
         return 'Course added successfully!'
-    return render_template('add_course.html')
+    return render_template('Add_course.html')
 
-@app.route('/add_student', methods=['GET', 'POST'])
+@app.route('/Add_student', methods=['GET', 'POST'])
 def add_student():
     if request.method == 'POST':
         student_id = uuid.uuid4()
@@ -54,9 +54,9 @@ def add_student():
         """
         session.execute(query, (student_id, student_name, student_email, gpa))
         return 'Student added successfully!'
-    return render_template('add_student.html')
+    return render_template('Add_student.html')
 
-@app.route('/add_degree_class', methods=['GET', 'POST'])
+@app.route('/Add_degree_class', methods=['GET', 'POST'])
 def add_degree_class():
     if request.method == 'POST':
         # Get values from the form
@@ -78,16 +78,16 @@ def add_degree_class():
         return 'Degree class record added successfully!'
     
     # Render a different template for adding degree class records
-    return render_template('add_degree_class.html')
+    return render_template('Add_degree_class.html')
 
 
-@app.route('/view_table', methods=['GET', 'POST'])
+@app.route('/View_table', methods=['GET', 'POST'])
 def view_table():
     if request.method == 'POST':
         table_name = request.form['table_name']
         rows = session.execute(f"SELECT * FROM {table_name}")
-        return render_template('view_table.html', rows=rows, table_name=table_name)
-    return render_template('view_table_form.html')
+        return render_template('View_table.html', rows=rows, table_name=table_name)
+    return render_template('View_table_form.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
